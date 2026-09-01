@@ -1,0 +1,6 @@
+{
+  "name": "Sankhyiki Karmayogi AI - Official Statistics Learning Platform",
+  "description": "AI-enabled Skill Intelligence & Capacity Building Platform for India's Official Statistical System with iGOT Karmayogi & NSSTA TPAC Integration, Automated Skill-Gap Assessment, and AI Quiz/MCQ Generation from Learning Materials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

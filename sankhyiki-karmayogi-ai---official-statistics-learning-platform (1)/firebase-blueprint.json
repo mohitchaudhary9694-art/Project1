@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Government official / Statistical Officer user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user / auth ID" },
+        "name": { "type": "string", "description": "Full name of the officer" },
+        "email": { "type": "string", "format": "email", "description": "Government email address" },
+        "govEmployeeId": { "type": "string", "description": "Official employee identifier" },
+        "designation": { "type": "string", "description": "Official designation" },
+        "cadre": { "type": "string", "description": "Statistical cadre (ISS, SSS, Subordinate, etc.)" },
+        "department": { "type": "string", "description": "Department wing (NAD, FOD, ESD, SSD, etc.)" },
+        "role": { "type": "string", "enum": ["learner", "admin", "supervisor"] },
+        "cpdHoursCompleted": { "type": "number", "description": "Completed Continuous Professional Development hours" },
+        "cpdHoursTarget": { "type": "number", "description": "Target CPD hours" }
+      },
+      "required": ["id", "name", "email", "cadre", "department", "role"]
+    },
+    "AssessmentResult": {
+      "title": "AssessmentResult",
+      "description": "Evaluation attempt score and competency result",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User identifier" },
+        "score": { "type": "number", "description": "Assessment score percentage" },
+        "totalQuestions": { "type": "number", "description": "Total question count" },
+        "submittedAt": { "type": "string", "description": "Submission timestamp" }
+      },
+      "required": ["userId", "score"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "iGOT Karmayogi / NSSTA course metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Course identifier" },
+        "title": { "type": "string", "description": "Course title" },
+        "provider": { "type": "string", "description": "Course provider (NSSTA, iGOT, etc.)" },
+        "credits": { "type": "number", "description": "CPD credits" }
+      },
+      "required": ["id", "title", "provider"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document indexed by Auth UID"
+    },
+    "/assessments/{assessmentId}": {
+      "schema": "AssessmentResult",
+      "description": "Assessment test submissions"
+    },
+    "/courses/{courseId}": {
+      "schema": "Course",
+      "description": "Available training modules and courses"
+    }
+  }
+}
